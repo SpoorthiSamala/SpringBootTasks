@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.stackroute.muzixapp.Exception.TrackAlreadyExistsException;
+import com.stackroute.muzixapp.Exception.TrackNotFound;
 import com.stackroute.muzixapp.repository.TrackRepository;
 import org.hibernate.SessionFactory;
 
@@ -25,8 +27,15 @@ public class TrackServiceImpl implements TrackService {
 
 
 	@Override
-	public Track saveTrack(Track track) {
+	public Track saveTrack(Track track) throws TrackAlreadyExistsException {
+		if(trackRepository.existsById(track.getId())){
+			throw new TrackAlreadyExistsException("Track already exists");
+		}
 		Track savedTrack=trackRepository.save(track);
+		if(savedTrack==null)
+		{
+			throw new TrackAlreadyExistsException("Track already exists");
+		}
 		return savedTrack;
 	}
 	//deleting the track by id
@@ -46,16 +55,21 @@ public class TrackServiceImpl implements TrackService {
 	}
 	//updating the track by setting name and comment
 	@Override
-	public boolean UpdateTrack(Track track) {
-		boolean result=false;
-		Track savedTrack=trackRepository.getOne(track.getId());
-		savedTrack.setName(track.getName());
-		savedTrack.setComment(track.getComment());
-		trackRepository.save(savedTrack);
-		if(savedTrack!=null){
-			result=true;
-		}
+	public boolean UpdateTrack(Track track) throws TrackNotFound {
+		if(trackRepository.existsById(track.getId())) {
+			boolean result = false;
+			Track savedTrack = trackRepository.getOne(track.getId());
+			savedTrack.setName(track.getName());
+			savedTrack.setComment(track.getComment());
+			trackRepository.save(savedTrack);
+			if (savedTrack != null) {
+				result = true;
+			}
 			return result;
+		}
+		else
+			throw new TrackNotFound("Track does not exist");
+
 
 	}
 	public List<Track> findByName(String name){
