@@ -58,4 +58,7 @@ public class TrackServiceImpl implements TrackService {
 			return result;
 
 	}
+	public List<Track> findByName(String name){
+		return trackRepository.findByName(name);
+	}
 }
