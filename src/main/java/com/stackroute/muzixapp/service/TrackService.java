@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.stackroute.muzixapp.Exception.TrackAlreadyExistsException;
 import com.stackroute.muzixapp.Exception.TrackNotFound;
-import com.stackroute.muzixapp.model.Track;
+import com.stackroute.muzixapp.domain.Track;
 
 public interface TrackService {
 

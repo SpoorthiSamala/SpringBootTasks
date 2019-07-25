@@ -2,14 +2,11 @@ package com.stackroute.muzixapp.controller;
 
 import com.stackroute.muzixapp.Exception.TrackAlreadyExistsException;
 import com.stackroute.muzixapp.Exception.TrackNotFound;
-import com.stackroute.muzixapp.model.Track;
+import com.stackroute.muzixapp.domain.Track;
 import com.stackroute.muzixapp.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

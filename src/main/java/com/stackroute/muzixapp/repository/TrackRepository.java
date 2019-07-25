@@ -1,6 +1,6 @@
 package com.stackroute.muzixapp.repository;
 
-import com.stackroute.muzixapp.model.Track;
+import com.stackroute.muzixapp.domain.Track;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

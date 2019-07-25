@@ -13,17 +13,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class WebConfiguration {
-   /* @Bean
-    ServletRegistrationBean h2ServletRegistration() {
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new WebServlet());
-        servletRegistrationBean.addUrlMappings("/console/*");
-        return servletRegistrationBean;*/
-        @Bean
-        public Docket api(){
-            return new Docket(DocumentationType.SWAGGER_2)
-                    .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.stackroute.muzixapp"))
-                    .paths(PathSelectors.any())
-                    .build();
+    /* @Bean
+     ServletRegistrationBean h2ServletRegistration() {
+         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new WebServlet());
+         servletRegistrationBean.addUrlMappings("/console/*");
+         return servletRegistrationBean;*/
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.stackroute.muzixapp"))
+                .paths(PathSelectors.any())
+                .build();
+
+
     }
 }

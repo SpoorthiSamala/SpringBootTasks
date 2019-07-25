@@ -2,17 +2,13 @@ package com.stackroute.muzixapp.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import com.stackroute.muzixapp.Exception.TrackAlreadyExistsException;
 import com.stackroute.muzixapp.Exception.TrackNotFound;
 import com.stackroute.muzixapp.repository.TrackRepository;
-import org.hibernate.SessionFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.stackroute.muzixapp.model.Track;
+import com.stackroute.muzixapp.domain.Track;
 import org.springframework.stereotype.Service;
 
 @Service
