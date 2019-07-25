@@ -25,12 +25,12 @@ public class TrackServiceImpl implements TrackService {
 	@Override
 	public Track saveTrack(Track track) throws TrackAlreadyExistsException {
 		if(trackRepository.existsById(track.getId())){
-			throw new TrackAlreadyExistsException("Track already exists");
+			throw new TrackAlreadyExistsException();
 		}
 		Track savedTrack=trackRepository.save(track);
 		if(savedTrack==null)
 		{
-			throw new TrackAlreadyExistsException("Track already exists");
+			throw new TrackAlreadyExistsException();
 		}
 		return savedTrack;
 	}
@@ -64,7 +64,7 @@ public class TrackServiceImpl implements TrackService {
 			return result;
 		}
 		else
-			throw new TrackNotFound("Track does not exist");
+			throw new TrackNotFound();
 
 
 	}
