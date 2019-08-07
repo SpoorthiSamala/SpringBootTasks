@@ -59,7 +59,7 @@ public class TrackServiceImpl implements TrackService {
 
   //updating the track by setting name and comment
   @Override
-  public boolean UpdateTrack(Track track) throws TrackNotFound {
+  public List<Track> UpdateTrack(Track track) throws TrackNotFound {
     if (trackRepository.existsById(track.getId())) {
       boolean result = false;
       Track savedTrack = trackRepository.getOne(track.getId());
@@ -69,7 +69,7 @@ public class TrackServiceImpl implements TrackService {
       if (savedTrack != null) {
         result = true;
       }
-      return result;
+      return trackRepository.findAll();
     } else
       throw new TrackNotFound();
 

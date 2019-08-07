@@ -17,7 +17,7 @@ public interface TrackService {
 
 	public Track getTrackById(String id);
 
-	public boolean UpdateTrack(Track track) throws TrackNotFound;
+	public List<Track> UpdateTrack(Track track) throws TrackNotFound;
 
 	public List<Track> findByName(String name);
 
