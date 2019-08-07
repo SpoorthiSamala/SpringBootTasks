@@ -11,13 +11,13 @@ public interface TrackService {
 
 	public Track saveTrack(Track track) throws TrackAlreadyExistsException;
 
-	public void deleteTrack(int id);
+	public List<Track> deleteTrack(int id);
 
 	public List<Track> getAllTracks();
 
 	public Track getTrackById(int id);
 
-	public boolean UpdateTrack(Track track) throws TrackNotFound;
+	public List<Track> UpdateTrack(Track track) throws TrackNotFound;
 
 	public List<Track> findByName(String name);
 
