@@ -28,17 +28,13 @@ public class TrackServiceImpl implements TrackService {
 			throw new TrackAlreadyExistsException();
 		}
 		Track savedTrack=trackRepository.save(track);
-		if(savedTrack==null)
-		{
-			throw new TrackAlreadyExistsException();
-		}
 		return savedTrack;
 	}
 	//deleting the track by id
 	@Override
-	public boolean deleteTrack(int id) {
+	public List<Track> deleteTrack(int id) {
 		trackRepository.deleteById(id);
-		return true;
+		return trackRepository.findAll();
 	}
 	//getting all the tracks
 	@Override
@@ -58,7 +54,5 @@ public class TrackServiceImpl implements TrackService {
     }
     return saveTrack(track);
   }
-//	public List<Track> findByName(String name){
-//		return trackRepository.findByName(name);
-//	}
+
 }
